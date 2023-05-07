@@ -23,7 +23,16 @@ export default function App() {
             rel="noreferrer"
             className="text-decoration-none"
           >
-            GitHub
+            GitHub{" "}
+          </a>
+          and is hosted on{" "}
+          <a
+            href="https://sparkly-stardust-25aeba.netlify.app/"
+            target="_blank"
+            rel="noreferrer"
+            className="text-decoration-none"
+          >
+            Netlify
           </a>
         </footer>
       </div>
