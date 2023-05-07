@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 
 import WeatherInfo from "./WeatherInfo";
+import WeatherForecast from "./WeatherForecast";
 import axios from "axios";
 import "./Weather.css";
 
@@ -10,6 +11,7 @@ export default function Weather(props) {
 
   function handleResponse(response) {
     setWeatherData({
+      coordinates: response.data.coord,
       ready: true,
       temperature: Math.round(response.data.main.temp),
       date: new Date(response.data.dt * 1000),
@@ -22,7 +24,8 @@ export default function Weather(props) {
   }
 
   function search() {
-    const apiKey = "210d99196a88b9257ed8cb3535a0a0c5";
+    //const apiKey = "210d99196a88b9257ed8cb3535a0a0c5";
+    const apiKey = "8402ccd9e55983fce71eeeaa1d2bd1fc";
 
     let url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
     axios.get(url).then(handleResponse);
@@ -61,6 +64,7 @@ export default function Weather(props) {
           </div>
         </form>
         <WeatherInfo data={weatherData} />
+        <WeatherForecast coordinates={weatherData.coordinates} />
       </div>
     );
   } else {
